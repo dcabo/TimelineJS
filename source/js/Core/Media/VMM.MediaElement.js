@@ -121,7 +121,11 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 					captionElem			=	"<div class='caption'>" + VMM.Util.linkify_with_twitter(data.caption, "_blank") + "</div>";
 				}
 			// IMAGE
-				if (m.type				==	"image") {
+				if (m.type				==	"html") {
+					isTextMedia			=	true;
+					mediaElem			=	m.id;
+			// IMAGE
+				} else if (m.type				==	"image") {
 					mediaElem			=	"<div class='media-image media-shadow'><img src='" + m.id + "' class='media-image'></div>";
 			// FLICKR
 				} else if (m.type		==	"flickr") {

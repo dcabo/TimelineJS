@@ -23,6 +23,10 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaType == 'undefined') {
 			media.type = "twitter-ready";
 		    media.id = d;
 		    success = true;
+		} else if (d.match('<div')) {
+			media.type = "html";
+			media.id = d;
+			success = true;
 		} else if (d.match('<blockquote')) {
 			media.type = "quote";
 			media.id = d;

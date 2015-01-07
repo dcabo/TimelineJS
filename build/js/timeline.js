@@ -1,5 +1,5 @@
 /*
-    TimelineJS - ver. 2015-01-07-02-56-07 - 2015-01-07
+    TimelineJS - ver. 2015-01-07-19-38-17 - 2015-01-07
     Copyright (c) 2012-2013 Northwestern University
     a project of the Northwestern University Knight Lab, originally created by Zach Wise
     https://github.com/NUKnightLab/TimelineJS
@@ -4514,7 +4514,11 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaElement == 'undefined') {
 					captionElem			=	"<div class='caption'>" + VMM.Util.linkify_with_twitter(data.caption, "_blank") + "</div>";
 				}
 			// IMAGE
-				if (m.type				==	"image") {
+				if (m.type				==	"html") {
+					isTextMedia			=	true;
+					mediaElem			=	m.id;
+			// IMAGE
+				} else if (m.type				==	"image") {
 					mediaElem			=	"<div class='media-image media-shadow'><img src='" + m.id + "' class='media-image'></div>";
 			// FLICKR
 				} else if (m.type		==	"flickr") {
@@ -4646,6 +4650,10 @@ if(typeof VMM != 'undefined' && typeof VMM.MediaType == 'undefined') {
 			media.type = "twitter-ready";
 		    media.id = d;
 		    success = true;
+		} else if (d.match('<div')) {
+			media.type = "html";
+			media.id = d;
+			success = true;
 		} else if (d.match('<blockquote')) {
 			media.type = "quote";
 			media.id = d;
