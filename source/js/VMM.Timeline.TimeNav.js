@@ -1465,6 +1465,10 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 				_marker_relative_pos	= positionRelative(interval, data[i].startdate, data[i].enddate);
 				_marker_thumb			= "";
 				
+				if (typeof data[i].classname != 'undefined') {
+					VMM.Lib.addClass(_marker_flag, data[i].classname);
+				}
+
 				// THUMBNAIL
 				if (data[i].asset != null && data[i].asset != "") {
 					VMM.appendElement(_marker_content, VMM.MediaElement.thumbnail(data[i].asset, 24, 24, data[i].uniqueid));

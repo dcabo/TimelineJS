@@ -1,5 +1,5 @@
 /*
-    TimelineJS - ver. 2014-12-09-18-51-25 - 2014-12-09
+    TimelineJS - ver. 2015-01-07-02-31-19 - 2015-01-07
     Copyright (c) 2012-2013 Northwestern University
     a project of the Northwestern University Knight Lab, originally created by Zach Wise
     https://github.com/NUKnightLab/TimelineJS
@@ -4187,12 +4187,12 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 					height: 				'390',
 					width: 					'640',
 					playerVars: {
-						enablejsapi:		1,
-						color: 				'white',
-						showinfo:			0,
-						theme:				'light',
-						start:				m.start,
-						rel:				0
+						enablejsapi: 1,
+						color: ("dark" == VMM.master_config.Timeline.youtubeTheme) ? "red" : "white", // https://developers.google.com/youtube/player_parameters#color
+						showinfo: 0,
+						theme: ("undefined" !== VMM.master_config.Timeline.youtubeTheme) ? VMM.master_config.Timeline.youtubeTheme : "light", // https://developers.google.com/youtube/player_parameters#theme
+						start: m.start,
+						rel: 0
 					},
 					videoId: m.id,
 					events: {
@@ -9114,6 +9114,11 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 				_marker_relative_pos	= positionRelative(interval, data[i].startdate, data[i].enddate);
 				_marker_thumb			= "";
 				
+				if (typeof data[i].classname != 'undefined') {
+					console.log("Got "+data[i].classname);
+					VMM.Lib.addClass(_marker_flag, data[i].classname);
+				}
+
 				// THUMBNAIL
 				if (data[i].asset != null && data[i].asset != "") {
 					VMM.appendElement(_marker_content, VMM.MediaElement.thumbnail(data[i].asset, 24, 24, data[i].uniqueid));
