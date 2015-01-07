@@ -1,5 +1,5 @@
 /*
-    TimelineJS - ver. 2015-01-07-02-31-19 - 2015-01-07
+    TimelineJS - ver. 2015-01-07-02-56-07 - 2015-01-07
     Copyright (c) 2012-2013 Northwestern University
     a project of the Northwestern University Knight Lab, originally created by Zach Wise
     https://github.com/NUKnightLab/TimelineJS
@@ -9115,7 +9115,6 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 				_marker_thumb			= "";
 				
 				if (typeof data[i].classname != 'undefined') {
-					console.log("Got "+data[i].classname);
 					VMM.Lib.addClass(_marker_flag, data[i].classname);
 				}
 
